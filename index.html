@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Try Phalcon!</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+	</head>
+<body>
+
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>Useful Information</h3>
+	</div>
+    <div class="modal-body">
+    	<p>Don't be nervous, welcome to your first time with Phalcon. First of all, we'll show you how this playground works.</p>
+    </div>
+    <div class="modal-footer">
+    	<a href="#" class="btn" data-dismiss="modal" aria-hidden="true" onclick="TryPhalcon.prepareStart();">Start</a>
+    </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<table width="98%" align="center">
+				<tr>
+					<td width="11%" align="left">
+						<a class="brand" href="./index.html">Try Phalcon</a>
+					</td>
+					<td align="left">
+						<div class="menubar">
+							<div class="nav-main-features nav-first">
+								<a href="http://www.phalconphp.com/index">HOME</a>
+							</div>
+							<div class="nav-main-features nav-first">
+								<a href="http://www.phalconphp.com/download">DOWNLOAD</a>
+							</div>
+							<div class="nav-main-features">
+								<a href="http://www.phalconphp.com/documentation">DOCUMENTATION</a>
+							</div>
+							<div class="nav-main-features">
+								<a href="http://www.phalconphp.com/support">SUPPORT</a>
+							</div>
+							<div class="nav-main-features nav-first">
+								<a href="https://github.com/phalcon/cphalcon">GITHUB</a>
+							</div>
+							<div class="nav-main-features">
+								<a target="blog" href="http://blog.phalconphp.com/">BLOG</a>
+							</div>
+						</div>
+					</td>
+					<td width="15%" align="right">
+						Theme <a href="#" onclick="TryPhalcon.setTheme('Bootstrap'); return false">Bootstrap</a> - <a href="#" onclick="TryPhalcon.setTheme('Sublime'); return false">Sublime</a>
+					</td>
+					<td width="15%" align="right">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-text="Try and Learn Phalcon on your own browser without install anything on your computer" data-lang="en" data-related="phalconphp">Tweet</a>
+					</td>
+				</table>
+				<div class="nav-collapse collapse"></div>
+		</div>
+	</div>
+</div>
+
+<table width="90%" id="main-table" align="center">
+<tr>
+    <td width="520" valign="top" id="left-editor">
+    	<ul class="nav nav-tabs" style="margin:0px">
+    		<li class="active file-tab">
+    			<a href="#" id="index-tab" rel="popover" data-content="This is the file you've currently opened in the editor.
+    			The playground automatically opens files when they're needed" data-title="Information 3/4" data-animation="1" data-trigger="manual" data-placement="right" onclick="TryFileSystem.open(this, 'index.php');">
+    				index.php
+    			</a>
+    		</li>
+    		<li id="robots-tabs-li" class="file-tab" style="display:none">
+    			<a href="#" id="robots-tab" rel="popover" data-content="We've moved the Robots class to another file for you" data-title="Information" data-animation="1" data-trigger="manual" data-placement="bottom" onclick="TryFileSystem.open(this, 'models/Robots.php');">
+    				models/Robots.php
+    			</a>
+    		</li>
+    	</ul>
+    	<div id="embed">
+    		<div id="editor" rel="popover" data-content="This is a web PHP editor, you can write PHP code as in your
+	    	favorite desktop editor" data-title="Information 1/4" data-animation="1" data-trigger="manual">&lt;?php
+
+echo "&lt;h1&gt;Hello there!&lt;/h1&gt;";
+
+echo "&lt;p&gt;This is an interactive tutorial to learn
+     Phalcon PHP Framework in your browser.&lt;/p&gt;";
+
+for ($i=0; $i&lt;=10; $i++) {
+    echo "Welcome", "&lt;br&gt;";
+}
+</div>
+    	</div>
+   	</td>
+    <td width="60%">
+    	<div id="browser">
+			<ul class="nav nav-tabs" style="margin:0px">
+    			<li class="active">
+    				<a href="#">
+    					Home
+    				</a>
+    			</li>
+    		</ul>
+    		<div id="page">
+    			<input type="text" name="url" id="url" value="http://remotehost/" disabled
+    			rel="popover" data-content="Here you can change the URL as in a real browser" data-animation="1" data-trigger="manual" data-title="Run information" data-placement="left" disabled
+    			/>
+    			<input type="button" class="btn btn-success" value="Run" id="run-code" rel="popover" data-content="Hit this button to execute the code in the editor" data-animation="1" data-trigger="manual" data-title="Information 4/4" data-placement="left" onclick="TryPhalcon.runCode()" disabled/>
+    			<div id="chrome" rel="popover" data-content="This is like a browser, here you can see the result of your executed code" data-animation="1" data-trigger="manual" data-title="Information 2/4" data-placement="bottom">
+<h1>Hello there!</h1>
+<p>This is an interactive tutorial to learn Phalcon PHP Framework in your browser.</p>
+Welcome<br>Welcome<br>Welcome<br>Welcome<br>Welcome<br>Welcome<br>Welcome<br>Welcome
+<br>Welcome<br>Welcome<br>Welcome<br>
+    			</div>
+    		</div>
+   		</div>
+   		<div id="instructions" >
+
+   			<div class="pagination" id="pager" align="right" style="display:none">
+				<ul>
+	    			<li class="disabled" id="prev-step"><a href="#" onclick="TryPhalcon.prevStep(); return false">Prev</a></li>
+					<li><a href="#"><span id="current-step">1</span>/<span id="step-count">10</span></a></li>
+					<li id="next-step"><a href="#" onclick="TryPhalcon.nextStep(); return false" id="next-pop" rel="popover" data-content="Good Work! Click here to do the next lesson when ready" data-animation="1" data-trigger="manual" data-placement="left">Next</a></li>
+				</ul>
+			</div>
+
+   			<div align="left" class="step">
+				<h2>Welcome</h2>
+				Try, learn and practice Phalcon in your browser.
+				<div align="right">
+					<input type="button" class="start-button btn btn-large btn-primary" value="Start Tutorial" onclick="$('#myModal').modal('show')"/> or
+					<input type="button" class="start-button btn btn-large btn-purple" value="I just want to play" onclick="TryPhalcon.play()"/>
+				</div>
+			</div>
+
+			<div align="left" style="display:none" class="step" id="step-1">
+				<h3>1. Introduction</h3>
+				This is a PHP playground, you can execute any kind of code and run it
+				without have to install anything on your computer. Type the following
+				code in the editor and then click the button "Run".
+			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-2">
+   				<h3>2. Using Phalcon</h3>
+				Phalcon is a C extension for PHP, once you have enabled it in your server,
+   				it's not necessary include files or register autoloaders
+   				to use it, very similar to the functions bundled as part of PHP.
+   				Let's call a method in a Phalcon class:
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-3">
+				<h3>3. Extending classes</h3>
+				As normal PHP classes, you can extend <a href="http://docs.phalconphp.com/en/latest/api/index.html">
+				Phalcon classes</a>, making them
+				base of your own classes. The class "MyText" extends from Phalcon\Text
+				inheriting all its functionality. The method "reverseCamel" executes
+				the previously seen "camelize" method but also returns the string
+				reversed. The following code executes that method:
+   			</div>
+
+			<div align="left" style="display:none" class="step" id="step-4">
+				<h3>4. Components</h3>
+				Functionality in Phalcon is organized in components.
+				For instance, <a href="http://docs.phalconphp.com/en/latest/reference/request.html">
+				Phalcon\Http\Request</a> allows us to get information
+				about the request. Let's see your user agent with the following code:
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-5">
+				<h3>5. Dependency Injection</h3>
+				<p>
+					Sometimes, components depend on other components. In Phalcon,
+					each component to be used within an application is registered
+					in a global bag where any component can easily request them.
+					<a href="http://docs.phalconphp.com/en/latest/reference/di.html">Phalcon\DI</a>
+					it's designed to achieve this task. Now, see how
+					we've moved the request creation to the services container.
+				<p>
+				<p>
+					Services can be globally accessed in the wide application.
+					Additionally, you have control over the object initialization
+					making your development more flexible.
+				</p>
+				<p>
+					By the way, what is your IP address?
+				</p>
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-6">
+				<h3>6. Using databases</h3>
+				<p>
+					Working with a database we'll make this playground more interesting.
+					See in the editor how to connect to a database.
+				</p>
+				<p>
+					What tables are in the database? Append this code to the existing in the editor
+					to know that.
+				</p>
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-7">
+				<h3>7. Working with Models</h3>
+				<p>
+					A full object oriented application may use an
+					<a href="http://docs.phalconphp.com/en/latest/reference/models.html">ORM</a> to manipulate
+					tables and rows using objects. The class "Robots" represents
+					the table "robots" in the database.
+				</p>
+				<p>
+					Here, it's where we use all seen together. Append the following code
+					to query all the robots created and print their names:
+				</p>
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-8">
+				<h3>8. Organizing Classes</h3>
+				<p>
+					A new file was created to organize better our example. You
+					can edit the code in each file by clicking its related tab
+					at the top of the editor.
+				</p>
+				<p>
+					Phalcon don't impose you to organize your application in certain way.
+					We can still use the model Robots in index.php. To check this,
+					let's count how many robots are of each type.
+				</p>
+   			</div>
+
+   			<div align="left" style="display:none" class="step" id="step-9">
+				<h3>9. Using Autoloaders</h3>
+				<p>
+					We've used a "require" to include the content of "models/Robots.php"
+					into "index.php". That would be fine if we have just a few models. Now, let's pretend
+					that we have 10 models, making a "require" for each of them can be tedious.
+					Phalcon provides a fast <a href="http://docs.phalconphp.com/en/latest/reference/loader.html">autoloader</a>,
+					it loads classes only when they're needed.
+					Let's change the "require" by adding this code:
+				</p>
+			</div>
+
+			<div align="left" style="display:none" class="step" id="step-10">
+				<h3>10. Applications</h3>
+				<p>
+					With Phalcon you can create Micro, Single and Multi module applications.
+					For the purposes of this tutorial, we'll create a
+					<a href="http://docs.phalconphp.com/en/latest/reference/micro.html">micro application</a>.
+					In you can add routes to a handler, depending on the URL accessed by the user if there's a predefined
+					route that matches it then the related handler will be executed. Append this code to the
+					application and change the url in the browser to: <a href="#" onclick="TryPhalcon.browse(this); return false">http://remotehost/say/hello/to/Alice</a>
+				</p>
+			</div>
+
+			<div align="left" style="display:none" class="step" id="step-11">
+				<h3>11. Putting it together</h3>
+				<p>
+					Finally, we will use all seen together, add the following path for searching robots by their type.
+					Then visit this URL <a href="#" onclick="TryPhalcon.browse(this); return false">http://remotehost/robots/borg</a>
+				</p>
+			</div>
+
+			<div align="left" style="display:none" class="step" id="step-12">
+				<h3>Thanks!</h3>
+				<p>
+					Thanks for trying Phalcon, make yourself at home. Feel free to check the
+					<a href="http://docs.phalconphp.com/">documentation</a> and test other examples
+					on this playground.
+					Try the other <a href="http://docs.phalconphp.com/en/latest/reference/tutorial.html">tutorials</a>
+					and enjoy this framework. Don't forget share this page with your friends and colleagues!
+				</p>
+			</div>
+
+   			<div id="example_embed" style="display:none">
+   				<div id="example"></div>
+   			</div>
+
+		</div>
+   	</td>
+  </tr>
+</table>
+
+<div id="footer">
+
+	<table class="footer-table" align="center">
+		<tr>
+			<td class="social tweets" align="left" valign="top">
+				<p>
+	                <label>Follow and Tweet</label>
+					<div id="tweet">
+						<p>Please wait while our updates load</p>
+					</div>
+					<a href="https://twitter.com/phalconphp" class="twitter-follow-button" data-show-count="false">Follow @phalconphp</a>
+				</p>
+			</td>
+			<td class="social" align="left" valign="top">
+				<p>
+					<label>Social</label><br/>
+					<a href="http://twitter.com/phalconphp">Follow us on Twitter</a><br/>
+					<a href="http://www.facebook.com/pages/Phalcon/134230726685897">Facebook Page</a><br/>
+					<a href="https://plus.google.com/102376109340560896457">Google+ Page</a><br/>
+					<a href="http://blog.phalconphp.com">Official Blog</a><br/>
+				</p>
+				<p>
+					<label>Support</label><br/>
+					<a href="https://github.com/phalcon/cphalcon/issues">Issues on Github</a><br/>
+					<a href="http://phalcon.uservoice.com/">Feedback</a><br/>
+					<a href="https://groups.google.com/forum/#!forum/phalcon">Support and Community</a>
+				</p>
+				<p>
+					<label>Get Involved</label><br/>
+					<a href="/phalconphp/about">About</a><br/>
+					<a href="https://github.com/phalcon/cphalcon/wiki/Roadmap">Roadmap</a>
+				</p>
+			</td>
+			<td class="subscribe" align="left" valign="top">
+				<p>
+					<label>Get Monthly News</label><br/>
+					<form action="http://www.phalconphp.com/index/subscribe/" method="post">
+						<table>
+							<tr>
+								<td><input type="text" placeholder="Your email address" size="25" name="email" id="email" value="" /></td>
+								<td><input type="submit" value="Subscribe" /></td>
+							</tr>
+						</table>
+					</form>
+				</p>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/playground.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://phalconphp.com/javascript/gs.js"></script>
+<script type="text/javascript" src="http://phalconphp.com/javascript/twitter.min.js"></script>
+
+</body>
