@@ -1,7 +1,7 @@
-# Try Phalcon!
+# Coderun!
 
-This is the frontend source code of the Try Phalcon! website. 
+This is the frontend source code of the Coderun! website. 
 
-Try, learn and practice Phalcon in your browser. 
+Try, learn and practice codes in your browser. 
 
-http://try.phalconphp.com
+http://coderun.in
